@@ -166,7 +166,7 @@ public class Lab2_PaulinaEuceda {
                     System.out.println("");
                     break;
                 case 5:
-                    Asignar(lista);
+                    resp = Asignar(lista);
                     break;
                 case 6:
                     resp = 'n';
@@ -178,7 +178,7 @@ public class Lab2_PaulinaEuceda {
         }
     }
 
-    public static void Asignar(ArrayList<Personaje> lista) {
+    public static char Asignar(ArrayList<Personaje> lista) {
         int hpu = 0, hpm = 0; //hit points del usuario y de la maquina
         int csu = 0, csm = 0; //critic strike del usuario y la maquina
         int acu = 0, acm = 0; //critic strike del usuario y la maquina
@@ -344,6 +344,8 @@ public class Lab2_PaulinaEuceda {
         }
         
         System.out.println("");
+        
+        return 'n';
     }
 
     
