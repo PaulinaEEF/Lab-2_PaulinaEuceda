@@ -5,8 +5,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Lab2_PaulinaEuceda {
-        static Scanner lea = new Scanner(System.in);
-        static Random ran = new Random();
+
+    static Scanner lea = new Scanner(System.in);
+    static Random ran = new Random();
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -14,7 +15,6 @@ public class Lab2_PaulinaEuceda {
         double estatura;
         int peso, edad;
         String descripcion, nacionalidad;
-        
 
         ArrayList<Personaje> lista = new ArrayList();
         lista.add(new Personaje("mago", "Plutarc", "elfo", 1.90, 190, 1800, "Le gusta el chocolate", "zebes"));
@@ -60,7 +60,7 @@ public class Lab2_PaulinaEuceda {
                     nacionalidad = lea.next();
 
                     lista.add(new Personaje(clase, nombre, raza, estatura, peso, edad, descripcion, nacionalidad));
-                    System.out.println(lista.get(lista.size()));
+                    System.out.println(lista.get(lista.size() - 1));
                     System.out.println("");
                     break;
                 case 2:
@@ -166,7 +166,7 @@ public class Lab2_PaulinaEuceda {
                     System.out.println("");
                     break;
                 case 5:
-                    Jugar(lista);
+                    Asignar(lista);
                     break;
                 case 6:
                     resp = 'n';
@@ -178,93 +178,174 @@ public class Lab2_PaulinaEuceda {
         }
     }
 
-    public static void Jugar(ArrayList<Personaje> lista) {
-        int hpu=0, hpm=0; //hit points del usuario y de la maquina
-        int csu=0, csm=0; //critic strike del usuario y la maquina
-        int acu=0, acm=0; //critic strike del usuario y la maquina
-        int dgu=0, dgm=0; //critic strike del usuario y la maquina
-        
-        
-        
+    public static void Asignar(ArrayList<Personaje> lista) {
+        int hpu = 0, hpm = 0; //hit points del usuario y de la maquina
+        int csu = 0, csm = 0; //critic strike del usuario y la maquina
+        int acu = 0, acm = 0; //critic strike del usuario y la maquina
+        int dgu = 0, dgm = 0; //critic strike del usuario y la maquina
+
         for (int i = 0; i < lista.size(); i++) {
             int n = i + 1;
             System.out.println(n + ") " + lista.get(i));
         }
         System.out.println("");
-        
+
         System.out.print("Elija el personaje que desea: ");
         int perusuario = lea.nextInt();
         perusuario--;
-        
+
         System.out.print("Elila el personaje de la maquina: ");
         int permaquina = lea.nextInt();
         permaquina--;
-        
-        if(lista.get(perusuario).getRaza()=="medianos"){
-            hpu=50 + ran.nextInt(10);
-        } else if(lista.get(perusuario).getRaza()=="enano"){
-            hpu=80 + ran.nextInt(20);
-        } else if(lista.get(perusuario).getRaza()=="elfo"){
-            hpu=50 + ran.nextInt(20);
-        } else if(lista.get(perusuario).getRaza()=="humano"){
-            hpu=40 + ran.nextInt(35);
-        }
-        System.out.println(hpu);
-        
-        if(lista.get(permaquina).getRaza()=="medianos"){
-            hpm=50 + ran.nextInt(10);
-        } else if(lista.get(permaquina).getRaza()=="enano"){
-            hpm=80 + ran.nextInt(20);
-        } else if(lista.get(permaquina).getRaza()=="elfo"){
-            hpm=50 + ran.nextInt(20);
-        } else if(lista.get(permaquina).getRaza()=="humano"){
-            hpm=40 + ran.nextInt(35);
-        }
-        System.out.println(hpm);
-        
-        if(lista.get(perusuario).getClase()=="clerigo"){
-            dgu=5 + ran.nextInt(10);
-            csu=97;
-            acu=40;
-        } else if(lista.get(perusuario).getClase()=="barbaro"){
-            dgu=15 + ran.nextInt(15);
-            csu=93;
-            acu=65;
-        } else if(lista.get(perusuario).getClase()=="mago"){
-            dgu=5 + ran.nextInt(10);
-            csu=101;
-            acu=20;
-        } else if(lista.get(perusuario).getClase()=="picaro"){
-            dgu=15 + ran.nextInt(10);
-            csu=80;
-            acu=50;
-        }
-        System.out.println(csu);
-        System.out.println(acu);
-        System.out.println(dgu);
-        
-        if(lista.get(permaquina).getClase()=="clerigo"){
-            dgm=5 + ran.nextInt(10);
-            csm=97;
-            acm=40;
-        } else if(lista.get(permaquina).getClase()=="barbaro"){
-            dgm=15 + ran.nextInt(15);
-            csm=93;
-            acm=65;
-        } else if(lista.get(permaquina).getClase()=="mago"){
-            dgm=5 + ran.nextInt(10);
-            csm=101;
-            acm=20;
-        } else if(lista.get(permaquina).getClase()=="picaro"){
-            dgm=15 + ran.nextInt(10);
-            csm=80;
-            acm=50;
-        }
-        System.out.println(csm);
-        System.out.println(acm);
-        System.out.println(dgm);
-        
 
+        if (lista.get(perusuario).getRaza() == "mediano") {
+            hpu = 50 + ran.nextInt(10);
+        } else if (lista.get(perusuario).getRaza() == "enano") {
+            hpu = 80 + ran.nextInt(20);
+        } else if (lista.get(perusuario).getRaza() == "elfo") {
+            hpu = 50 + ran.nextInt(20);
+        } else if (lista.get(perusuario).getRaza() == "humano") {
+            hpu = 40 + ran.nextInt(35);
+        }
+
+        if (lista.get(permaquina).getRaza() == "medianos") {
+            hpm = 50 + ran.nextInt(10);
+        } else if (lista.get(permaquina).getRaza() == "enano") {
+            hpm = 80 + ran.nextInt(20);
+        } else if (lista.get(permaquina).getRaza() == "elfo") {
+            hpm = 50 + ran.nextInt(20);
+        } else if (lista.get(permaquina).getRaza() == "humano") {
+            hpm = 40 + ran.nextInt(35);
+        }
+
+        if (lista.get(perusuario).getClase() == "clerigo") {
+            dgu = 5 + ran.nextInt(10);
+            csu = 97;
+            acu = 40;
+        } else if (lista.get(perusuario).getClase() == "barbaro") {
+            dgu = 15 + ran.nextInt(15);
+            csu = 93;
+            acu = 65;
+        } else if (lista.get(perusuario).getClase() == "mago") {
+            dgu = 5 + ran.nextInt(5);
+            csu = 101;
+            acu = 20;
+        } else if (lista.get(perusuario).getClase() == "picaro") {
+            dgu = 15 + ran.nextInt(10);
+            csu = 80;
+            acu = 50;
+        }
+
+        if (lista.get(permaquina).getClase() == "clerigo") {
+            dgm = 5 + ran.nextInt(10);
+            csm = 97;
+            acm = 40;
+        } else if (lista.get(permaquina).getClase() == "barbaro") {
+            dgm = 15 + ran.nextInt(15);
+            csm = 93;
+            acm = 65;
+        } else if (lista.get(permaquina).getClase() == "mago") {
+            dgm = 5 + ran.nextInt(10);
+            csm = 101;
+            acm = 20;
+        } else if (lista.get(permaquina).getClase() == "picaro") {
+            dgm = 15 + ran.nextInt(10);
+            csm = 80;
+            acm = 50;
+        }
+
+        int omaquina; //esta variable lleva que opcion escoge la maquina, si atacar o defender
+
+        int ganador=0;
+        boolean flag = true;
+        int turno = 0;
+
+        while (flag) {
+            System.out.println("Hitpoints del usuario "+hpu);
+            System.out.println("Hitpoints de la maquina "+hpm);
+            int suma=0;
+            omaquina = 1 + ran.nextInt(2);
+
+            System.out.println("");
+            System.out.println("1) Atacar");
+            System.out.println("2) Defender");
+            System.out.print("Ingrese la accion que desea: ");
+            int accion = lea.nextInt();
+            switch (accion) {
+                case 1:
+                    int ataque = 1 + ran.nextInt(100);
+                    if (ataque > acm) {
+                        if (ataque > csm) {
+                            hpm = hpm - (csm * 2);
+                        } else {
+                            hpm =hpm- csm;
+                        }
+                        System.out.println("La maquina ahora tiene "+(hpm)+" hitpoints");
+                    } else{
+                        System.out.println("El usuario no generó daño");
+                    }
+                    break;
+                case 2:
+                    suma = 15;
+                    break;
+                default:
+                    break;
+            }
+            System.out.println("");
+            
+            omaquina = 1+ran.nextInt(2);
+            
+            switch (omaquina) {
+                case 1:
+                    System.out.println("La maquina atacó");
+                    int ataque = 1 + ran.nextInt(100);
+                    if (ataque > (acu+suma)) {
+                        if (ataque > csu) {
+                            hpu = hpu - (csu * 2);
+                        } else {
+                            hpu =hpu- csu;
+                        }
+                        System.out.println("El usuario ahora tiene "+hpu+" hitpoints");
+                    } else{
+                        System.out.println("La maquina no generó daño");
+                    }
+                    suma = 0;
+                    break;
+                case 2:
+                    suma = 15;
+                    System.out.println("La maquina defiende");
+                    break;
+                default:
+                    break;
+            }
+            
+            
+            
+            if(hpm<=0 && hpu <=0){
+                ganador =3;
+                flag = false;
+            } else if (hpu<=0){
+                ganador=1;
+                flag = false;
+            } else if(hpm<=0){
+                ganador =2;
+                flag = false;
+            }
+            System.out.println("");
+            
+        }
+        
+        if (ganador==2) {
+            System.out.println("Ganó el usario");
+        } else if(ganador == 1){
+            System.out.println("Ganó la maquina");
+        } else{
+            System.out.println("Empate");
+        }
+        
+        System.out.println("");
     }
+
+    
 
 }

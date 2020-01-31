@@ -101,7 +101,7 @@ public class Personaje {
 
     @Override
     public String toString() {
-        return "Personaje{" + "clase=" + clase + ", nombre=" + nombre + ", raza=" + raza + ", estatura=" + estatura + ", peso=" + peso + ", a\u00f1os=" + años + ", descripcion=" + descripcion + ", nacionalidad=" + nacionalidad + '}';
+        return "" + "Clase = " + clase + ", Nombre = " + nombre + ", Raza = " + raza + ", Estatura = " + estatura + ", Peso = " + peso + ", A\u00f1os = " + años + ", Descripcion = " + descripcion + ", Nacionalidad = " + nacionalidad + '.';
     }
     
     
