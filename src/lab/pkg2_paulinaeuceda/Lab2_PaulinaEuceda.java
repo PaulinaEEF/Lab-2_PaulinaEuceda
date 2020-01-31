@@ -1,9 +1,12 @@
 package lab.pkg2_paulinaeuceda;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Lab2_PaulinaEuceda {
+        static Scanner lea = new Scanner(System.in);
+        static Random ran = new Random();
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -11,6 +14,7 @@ public class Lab2_PaulinaEuceda {
         double estatura;
         int peso, edad;
         String descripcion, nacionalidad;
+        
 
         ArrayList<Personaje> lista = new ArrayList();
         lista.add(new Personaje("mago", "Plutarc", "elfo", 1.90, 190, 1800, "Le gusta el chocolate", "zebes"));
@@ -18,7 +22,6 @@ public class Lab2_PaulinaEuceda {
         lista.add(new Personaje("barbaro", "Gustavo", "mediano", 1.60, 130, 90, "Disfruta limpiar las armas", "norfair"));
         lista.add(new Personaje("picaro", "Hugo", "humano", 1.70, 160, 35, "Tiene aguante", "maridia"));
 
-        Scanner lea = new Scanner(System.in);
         char resp = 's';
         while (resp == 's') {
             System.out.println("1) Creacion de personajes");
@@ -57,6 +60,7 @@ public class Lab2_PaulinaEuceda {
                     nacionalidad = lea.next();
 
                     lista.add(new Personaje(clase, nombre, raza, estatura, peso, edad, descripcion, nacionalidad));
+                    System.out.println(lista.get(lista.size()));
                     System.out.println("");
                     break;
                 case 2:
@@ -68,7 +72,7 @@ public class Lab2_PaulinaEuceda {
                     System.out.print("Ingrese el indice del personaje que desea modificar: ");
                     int pos = lea.nextInt();
                     pos--;
-                    
+
                     char respue = 's';
                     while (respue == 's') {
                         System.out.println("1) Modificar clase");
@@ -132,7 +136,7 @@ public class Lab2_PaulinaEuceda {
                                 lista.get(pos).setNacionalidad(nacionalidad);
                                 break;
                             case 9:
-                                respue='n';
+                                respue = 'n';
                                 break;
                             default:
                                 break;
@@ -158,14 +162,11 @@ public class Lab2_PaulinaEuceda {
                     int posicion = lea.nextInt();
                     posicion--;
                     lista.remove(posicion);
-                    
-                    for (int i = 0; i < lista.size(); i++) {
-                        int n = i + 1;
-                        System.out.println(n + ") " + lista.get(i));
-                    }
+
+                    System.out.println("");
                     break;
                 case 5:
-
+                    Jugar(lista);
                     break;
                 case 6:
                     resp = 'n';
@@ -175,6 +176,95 @@ public class Lab2_PaulinaEuceda {
             }
 
         }
+    }
+
+    public static void Jugar(ArrayList<Personaje> lista) {
+        int hpu=0, hpm=0; //hit points del usuario y de la maquina
+        int csu=0, csm=0; //critic strike del usuario y la maquina
+        int acu=0, acm=0; //critic strike del usuario y la maquina
+        int dgu=0, dgm=0; //critic strike del usuario y la maquina
+        
+        
+        
+        for (int i = 0; i < lista.size(); i++) {
+            int n = i + 1;
+            System.out.println(n + ") " + lista.get(i));
+        }
+        System.out.println("");
+        
+        System.out.print("Elija el personaje que desea: ");
+        int perusuario = lea.nextInt();
+        perusuario--;
+        
+        System.out.print("Elila el personaje de la maquina: ");
+        int permaquina = lea.nextInt();
+        permaquina--;
+        
+        if(lista.get(perusuario).getRaza()=="medianos"){
+            hpu=50 + ran.nextInt(10);
+        } else if(lista.get(perusuario).getRaza()=="enano"){
+            hpu=80 + ran.nextInt(20);
+        } else if(lista.get(perusuario).getRaza()=="elfo"){
+            hpu=50 + ran.nextInt(20);
+        } else if(lista.get(perusuario).getRaza()=="humano"){
+            hpu=40 + ran.nextInt(35);
+        }
+        System.out.println(hpu);
+        
+        if(lista.get(permaquina).getRaza()=="medianos"){
+            hpm=50 + ran.nextInt(10);
+        } else if(lista.get(permaquina).getRaza()=="enano"){
+            hpm=80 + ran.nextInt(20);
+        } else if(lista.get(permaquina).getRaza()=="elfo"){
+            hpm=50 + ran.nextInt(20);
+        } else if(lista.get(permaquina).getRaza()=="humano"){
+            hpm=40 + ran.nextInt(35);
+        }
+        System.out.println(hpm);
+        
+        if(lista.get(perusuario).getClase()=="clerigo"){
+            dgu=5 + ran.nextInt(10);
+            csu=97;
+            acu=40;
+        } else if(lista.get(perusuario).getClase()=="barbaro"){
+            dgu=15 + ran.nextInt(15);
+            csu=93;
+            acu=65;
+        } else if(lista.get(perusuario).getClase()=="mago"){
+            dgu=5 + ran.nextInt(10);
+            csu=101;
+            acu=20;
+        } else if(lista.get(perusuario).getClase()=="picaro"){
+            dgu=15 + ran.nextInt(10);
+            csu=80;
+            acu=50;
+        }
+        System.out.println(csu);
+        System.out.println(acu);
+        System.out.println(dgu);
+        
+        if(lista.get(permaquina).getClase()=="clerigo"){
+            dgm=5 + ran.nextInt(10);
+            csm=97;
+            acm=40;
+        } else if(lista.get(permaquina).getClase()=="barbaro"){
+            dgm=15 + ran.nextInt(15);
+            csm=93;
+            acm=65;
+        } else if(lista.get(permaquina).getClase()=="mago"){
+            dgm=5 + ran.nextInt(10);
+            csm=101;
+            acm=20;
+        } else if(lista.get(permaquina).getClase()=="picaro"){
+            dgm=15 + ran.nextInt(10);
+            csm=80;
+            acm=50;
+        }
+        System.out.println(csm);
+        System.out.println(acm);
+        System.out.println(dgm);
+        
+
     }
 
 }
